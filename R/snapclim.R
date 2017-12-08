@@ -5,7 +5,7 @@
 #' The \code{snapclim} package provides access to curated collections of public climate data sets
 #' offered by Scenarios Network for Alaska and Arctic Planning (SNAP) at the University of Alaska Fairbanks.
 #' \code{snapclim} interfaces with SNAP's Amazon Web Services cloud storage to retrieve specific climate data.
-#' Available data includes historical observation-based data and historical and projected climate model outputs.
+#' Available data includes historical observation-based climate data and historical and projected climate model outputs.
 #' Available climate variables include temperature and precipitation.
 #'
 #' Regional climate summaries and climate data at point locations are available,

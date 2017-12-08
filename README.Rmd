@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 The `snapclim` package provides access to curated collections of public climate data sets 
 offered by Scenarios Network for Alaska and Arctic Planning (SNAP) at the University of Alaska Fairbanks.
 `snapclim` interfaces with SNAP's Amazon Web Services cloud storage to retrieve specific climate data.
-Available data includes historical observation-based data as well as historical and projected climate model outputs.
+Available data includes historical observation-based climate data as well as historical and projected climate model outputs.
 Currently available climate variables include temperature and precipitation.
 
 ## Time and space
