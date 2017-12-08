@@ -1,0 +1,8 @@
+---
+title: "SNAPverse data package: snapclim"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{SNAPverse data package: snapclim}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
