@@ -1,3 +1,5 @@
+globalVariables(".data")
+
 #' snapclim: Curated SNAP climate data sets.
 #'
 #' \code{snapclim} offers curated collections of public climate data sets.
