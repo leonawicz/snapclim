@@ -108,8 +108,9 @@ climdata <- function(id, area, time_scale = "monthly", set = NULL){
 }
 
 .check_area <- function(x){
-  if(!x %in% climate_regions$Region) stop("Invalid `area`. See `collections` for available areas/regions.")
-  y <- dplyr::filter(climate_regions, .data[["Region"]] == x)
+  cr <- snapclim::climate_regions
+  if(!x %in% cr$Region) stop("Invalid `area`. See `collections` for available areas/regions.")
+  y <- dplyr::filter(cr, .data[["Region"]] == x)
   set <- y$Group[1]
   if(nrow(y) > 1) warning(paste0("`area` not unique and `set` not provided. Please provide `set`. Using '", set, "'."))
   set
