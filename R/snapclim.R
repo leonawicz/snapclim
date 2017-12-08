@@ -1,6 +1,8 @@
 #' snapclim: Curated SNAP climate data sets.
 #'
-#' The \code{snapclim} package provides access to a collection of curated, publicly available climate data sets
+#' \code{snapclim} offers curated collections of public climate data sets.
+#'
+#' The \code{snapclim} package provides access to curated collections of public climate data sets
 #' offered by Scenarios Network for Alaska and Arctic Planning (SNAP) at the University of Alaska Fairbanks.
 #' \code{snapclim} interfaces with SNAP's Amazon Web Services cloud storage to retrieve specific climate data.
 #' Available data includes historical observation-based data and historical and projected climate model outputs.
@@ -15,15 +17,6 @@
 #' Daily, monthly, seasonal, annual and decadal temporal resolutions are available.
 #' However, not all combinations of temporal and spatial resolution exist, e.g.,
 #' daily point location climate projections.
-#'
-#' \code{snapclim} is a member package in the data sector of the SNAPverse.
-#' While data packages typically include raw data sets in support of other R packages containing code,
-#' \code{snapclim} is more like a typical R package. Instead of storing local copies of data sets,
-#' it contains functions for accessing external data sets that would be too large to store conveniently in a
-#' data package, especially considering that any given user session would likely utilize
-#' only a small fraction of the total available data. However, \code{snapclim} does not offer functionality
-#' beyond accessing data and is therefore still best conceptualized as a data package.
-#' Functions for statistical analysis and modeling of SNAP data are already available in packages like \code{snapstat}.
 #'
 #' \code{snapclim} is a member package in the data sector of the SNAPverse.
 #' Data packages typically include raw data sets in support of other R packages.
