@@ -5,14 +5,14 @@ snapclim
 
 [![Travis-CI Build Status](https://travis-ci.org/leonawicz/snapclim.svg?branch=master)](https://travis-ci.org/leonawicz/snapclim) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/snapclim?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/snapclim) [![Coverage Status](https://img.shields.io/codecov/c/github/leonawicz/snapclim/master.svg)](https://codecov.io/github/leonawicz/snapclim?branch=master)
 
-The `snapclim` package provides access to curated collections of public climate data sets offered by Scenarios Network for Alaska and Arctic Planning (SNAP) at the University of Alaska Fairbanks. `snapclim` interfaces with SNAP's Amazon Web Services cloud storage to retrieve specific climate data. Available data includes historical observation-based climate data as well as historical and projected climate model outputs. Currently available climate variables include temperature and precipitation.
+The `snapclim` package provides access to curated collections of public climate data sets offered by Scenarios Network for Alaska and Arctic Planning (SNAP) at the University of Alaska Fairbanks. `snapclim` interfaces with SNAP's Amazon Web Services cloud storage to retrieve specific climate data. Available data includes historical observation-based climate data as well as historical and projected climate model outputs. Available climate variables include total precipitation and minimum, mean and maximum temperature.
 
 Time and space
 --------------
 
 Regional climate summaries and climate data at point locations are available, stretching over Alaska and western Canada. Regions include the state of Alaska and several Canadian provinces, ecological regions, fire management zones, terrestrial protected areas under jurisdiction and management of various governmental agencies and more. Point locations include cities, towns, villages and other municipal units and locations of interest.
 
-Daily, monthly, seasonal, annual and decadal temporal resolutions are available. However, not all combinations of temporal and spatial resolution exist, e.g., daily point location climate projections.
+Daily, monthly, seasonal, annual and decadal temporal resolutions are planned for inclusion. At this time, available data include AR5/CMIP5 2-km downscaled outputs over Alaska and western Canada for 86 regions and 3,967 point locations at all but the daily temporal resolution. Please not that not all combinations of temporal and spatial resolution exist, e.g., daily point location climate projections.
 
 SNAPverse context
 -----------------
