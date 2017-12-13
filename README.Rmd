@@ -22,7 +22,7 @@ The `snapclim` package provides access to curated collections of public climate 
 offered by Scenarios Network for Alaska and Arctic Planning (SNAP) at the University of Alaska Fairbanks.
 `snapclim` interfaces with SNAP's Amazon Web Services cloud storage to retrieve specific climate data.
 Available data includes historical observation-based climate data as well as historical and projected climate model outputs.
-Currently available climate variables include temperature and precipitation.
+Available climate variables include total precipitation and minimum, mean and maximum temperature.
 
 ## Time and space
 
@@ -32,8 +32,10 @@ Regions include the state of Alaska and several Canadian provinces, ecological r
 terrestrial protected areas under jurisdiction and management of various governmental agencies and more.
 Point locations include cities, towns, villages and other municipal units and locations of interest.
 
-Daily, monthly, seasonal, annual and decadal temporal resolutions are available.
-However, not all combinations of temporal and spatial resolution exist, e.g., 
+Daily, monthly, seasonal, annual and decadal temporal resolutions are planned for inclusion.
+At this time, available data include AR5/CMIP5 2-km downscaled outputs over Alaska and western Canada for 
+86 regions and 3,967 point locations at all but the daily temporal resolution.
+Please not that not all combinations of temporal and spatial resolution exist, e.g., 
 daily point location climate projections.
 
 ## SNAPverse context
