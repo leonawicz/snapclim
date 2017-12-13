@@ -29,4 +29,7 @@ RoxygenNote: 6.0.1
 Imports: 
     magrittr,
     dplyr,
-    tibble
+    tibble,
+    snaplocs
+Remotes:
+    leonawicz/snaplocs
