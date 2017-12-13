@@ -71,7 +71,7 @@ climate_locations <- function(type = "all"){
   cr <- snapclim::climate_regions
   if(type == "region") return(dplyr::rename(cr, Location = .data[["Region"]]))
   pts <- snaplocs::locs %>% dplyr::select(-.data[["lon"]], -.data[["lat"]]) %>%
-    dplyr::filter(region != "Northwest Territories") %>%
+    dplyr::filter(.data[["region"]] != "Northwest Territories") %>%
     dplyr::rename(Location = .data[["loc"]], Group = .data[["region"]]) %>%
     dplyr::mutate(Group = as.character(.data[["Group"]]))
   if(type == "point") return(pts)
