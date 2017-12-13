@@ -198,7 +198,8 @@
     <p>Download climate data sets from SNAP.</p>
     
 
-    <pre class="usage"><span class='fu'>climdata</span>(<span class='no'>id</span>, <span class='no'>area</span>, <span class='kw'>time_scale</span> <span class='kw'>=</span> <span class='st'>"monthly"</span>, <span class='kw'>set</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>climdata</span>(<span class='no'>id</span>, <span class='no'>area</span>, <span class='kw'>set</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>time_scale</span> <span class='kw'>=</span> <span class='st'>"monthly"</span>, <span class='kw'>decavg</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>variable</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -209,16 +210,24 @@
     </tr>
     <tr>
       <th>area</th>
-      <td><p>character, aerial unit/region or point location of interest. See <code><a href='climate_regions.html'>climate_regions</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>time_scale</th>
-      <td><p>character, <code>"monthly"</code>, <code>"seasonal"</code> or <code>"annual"</code>.</p></td>
+      <td><p>character, region or point location of interest. See <code><a href='climate_regions.html'>climate_regions</a></code>.</p></td>
     </tr>
     <tr>
       <th>set</th>
       <td><p>character or <code>NULL</code>, The set/group that <code>area</code> belongs to. Can be ignored,
 but should be provided in rare cases where <code>area</code> name is not unique (a warning is thrown). See <code><a href='climate_regions.html'>climate_regions</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>time_scale</th>
+      <td><p>character, <code>"monthly"</code>, <code>"seasonal"</code>, <code>"annual"</code>.</p></td>
+    </tr>
+    <tr>
+      <th>decavg</th>
+      <td><p>logical, if <code>TRUE</code>, return decadal means of annual statistics. See details.</p></td>
+    </tr>
+    <tr>
+      <th>variable</th>
+      <td><p><code>NULL</code> or character: <code>"tas"</code>, <code>"tasmin"</code>, <code>"tasmax"</code> or <code>"pr"</code>. See details.</p></td>
     </tr>
     </table>
     
@@ -230,6 +239,28 @@ but should be provided in rare cases where <code>area</code> name is not unique 
 
     <p>This function downloads climate data sets from Scenarios Network for Alaska and Arctic Planning based on the data set <code>id</code>
 and specification of the region or point location of interest.</p>
+<p>For regional climate data, annual statistics with a temporal resolution of monthly, 3-month seasonal and full annual period
+are based on regional spatial climate variable distribution samples at the respective resolution.</p>
+<p>Statistics include:</p><ul>
+<li><p>mean</p></li>
+<li><p>standard deviation</p></li>
+<li><p>minimum</p></li>
+<li><p>maximum</p></li>
+<li><p>quantiles: 0.025, 0.05, 0.10, 0.25, 0.50 (median), 0.75, 0.90, 0.95 and 0.975.</p></li>
+</ul>
+    <p>Comparatively, point location data sets do not include statistics regarding the surrounding spatial distribution of values.
+Only the <code>Mean</code> column is retained in these tables.</p>
+<p>Seasonal and annual aggregate statistics represent means for temperature variables and totals for precipitation.
+Note that decadal averages are strictly as their name suggests: decadal means of each statistic at the respective intra-annual time steps.
+E.g., <code>decavg = TRUE</code> returns a data frame including the mean of ten annual 95th percentile values,
+not the 95th percentile of the spatial climate variable distribution at a decadal resolution.
+For something like the latter, this can be computed from raw distribution data.</p>
+<p>Data sets are retrieved for specific locations. For the smaller, decadal resolution data sets, there is an option to download
+all point locations in one table with <code>area = "points"</code> (requires <code>decavg = TRUE</code>),
+but in this case it must be requested for a specific climate variable to further reduce the download size to no more than 24
+MB compressed for all 3,867 point locations.
+In general, if <code>variable = NULL</code>, all available climate variables are retained. In the case of <code>area = "points"</code>,
+a specific climate variable must be provided or it will default to temperature (<code>tas</code>).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
