@@ -1,11 +1,11 @@
 Package: snapclim
-Version: 0.1.0
+Version: 0.2.0
 Title: API to SNAP Climate Data Collections
 Description: Provides access to curated collections of public climate data sets
     offered by Scenarios Network for Alaska and Arctic Planning (SNAP) at the University of Alaska Fairbanks.
     'snapclim' interfaces with SNAP's Amazon Web Services cloud storage to retrieve specific climate data.
     Available data includes historical climate observations as well as historical and projected climate model outputs.
-    Available climate variables include temperature and precipitation.
+    Available climate variables include total precipitation and minimum, mean and maximum temperature.
     Spatial coverage includes politically and ecologically defined aerial units as well as communities and other 
     point locations of interest across Alaska and western Canada.
     Depending on the specific climate data set, temporal resolution ranges from daily to decadal.
