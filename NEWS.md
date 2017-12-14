@@ -1,3 +1,7 @@
+# snapclim 0.2.1 (Release date: 2017-12-14)
+
+* Added initial vignette content.
+
 # snapclim 0.2.0 (Release date: 2017-12-13)
 
 * Updated `climdata` function to access monthly, seasonal, annual and decadal data for both regions and point locations.
