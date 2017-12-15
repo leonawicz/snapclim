@@ -9,7 +9,6 @@ knitr::opts_chunk$set(
   collapse = TRUE, comment = "#>", fig.path = "man/figures/README-",
   message = FALSE, warning = FALSE, error = FALSE, tidy = TRUE
 )
-
 ```
 # snapclim
 
