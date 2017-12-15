@@ -8,7 +8,7 @@ climdata(id, area, set = NULL, time_scale = "monthly", decavg = FALSE,
   variable = NULL)
 }
 \arguments{
-\item{id}{character, data set ID. See \code{\link{collections}} for available data sets.}
+\item{id}{character, data set ID. See \code{\link{climate_collections}} for available data sets.}
 
 \item{area}{character, region or point location of interest. See \code{\link{climate_locations}}.}
 

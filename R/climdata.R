@@ -33,7 +33,7 @@
 #' In general, if \code{variable = NULL}, all available climate variables are retained. In the case of \code{area = "points"},
 #' a specific climate variable must be provided or it will default to temperature (\code{tas}).
 #'
-#' @param id character, data set ID. See \code{\link{collections}} for available data sets.
+#' @param id character, data set ID. See \code{\link{climate_collections}} for available data sets.
 #' @param area character, region or point location of interest. See \code{\link{climate_locations}}.
 #' @param set character or \code{NULL}, The set/group that \code{area} belongs to. Can be ignored,
 #' but should be provided in rare cases where \code{area} name is not unique (a warning is thrown). See \code{\link{climate_locations}}.
@@ -86,7 +86,7 @@ climdata <- function(id, area, set = NULL, time_scale = "monthly", decavg = FALS
 .clim_dir <- "https://s3.amazonaws.com/leonawicz/clim/stat/ar5_2km"
 
 .check_clim_id <- function(x){
-  if(!x %in% .ids) stop("Invalid `id`. See `collections`.")
+  if(!x %in% .ids) stop("Invalid `id`. See `climate_collections`.")
 }
 
 .check_area <- function(x, s = NULL){
