@@ -17,10 +17,6 @@ knitr::opts_chunk$set(
 
 To begin using `snapclim` effectively, take a look at the climate data collections available in your current version of the package.
 
-```{r tibble, echo=FALSE}
-library(tibble)
-```
-
 ```{r metadata}
 library(snapclim)
 climate_collections()
