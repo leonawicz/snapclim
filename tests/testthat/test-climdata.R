@@ -35,7 +35,7 @@ test_that("climdata returns as expected", {
 
   x2 <- climdata("ar5stats", "Galena", "Alaska")
 
-  err <- "Invalid `id`. See `collections`."
+  err <- "Invalid `id`. See `climate_collections`."
   expect_error(climdata("X", "Fairbanks"), err)
   err <- "Invalid `area`. See `climate_locations` for available regions and point locations."
   expect_error(climdata("ar5stats", "X"), err)
