@@ -34,9 +34,9 @@
 #' a specific climate variable must be provided or it will default to temperature (\code{tas}).
 #'
 #' @param id character, data set ID. See \code{\link{collections}} for available data sets.
-#' @param area character, region or point location of interest. See \code{\link{climate_regions}}.
+#' @param area character, region or point location of interest. See \code{\link{climate_locations}}.
 #' @param set character or \code{NULL}, The set/group that \code{area} belongs to. Can be ignored,
-#' but should be provided in rare cases where \code{area} name is not unique (a warning is thrown). See \code{\link{climate_regions}}.
+#' but should be provided in rare cases where \code{area} name is not unique (a warning is thrown). See \code{\link{climate_locations}}.
 #' @param time_scale character, \code{"monthly"}, \code{"seasonal"}, \code{"annual"}.
 #' @param decavg logical, if \code{TRUE}, return decadal means of annual statistics. See details.
 #' @param variable \code{NULL} or character: \code{"tas"}, \code{"tasmin"}, \code{"tasmax"} or \code{"pr"}. See details.
@@ -72,7 +72,7 @@ climdata <- function(id, area, set = NULL, time_scale = "monthly", decavg = FALS
   if(is.null(set)) set <- set_
   .check_set(set)
   if(decavg) sub_dir <- file.path("decavg", sub_dir)
-  loc_type <- ifelse(set %in% region_groups(), "regional", "point")
+  loc_type <- ifelse(set %in% region_groups, "regional", "point")
   file <- file.path(.clim_dir, loc_type, sub_dir, set, paste0(gsub("/", "--", area), "_clim_stats.rds"))
   x <- readRDS(url(file)) %>% dplyr::filter(.data[[intra_var]] %in% intra_annual) %>%
     droplevels %>% dplyr::rename(Model = .data[["GCM"]])
@@ -101,6 +101,6 @@ climdata <- function(id, area, set = NULL, time_scale = "monthly", decavg = FALS
 }
 
 .check_set <- function(x){
-  if(!x %in% c(region_groups(), point_groups))
+  if(!x %in% c(region_groups, point_groups))
     stop("Invalid `set`. See `location_sets` for available region and point location groups/sets.")
 }

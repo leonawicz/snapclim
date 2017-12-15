@@ -10,10 +10,10 @@ climdata(id, area, set = NULL, time_scale = "monthly", decavg = FALSE,
 \arguments{
 \item{id}{character, data set ID. See \code{\link{collections}} for available data sets.}
 
-\item{area}{character, region or point location of interest. See \code{\link{climate_regions}}.}
+\item{area}{character, region or point location of interest. See \code{\link{climate_locations}}.}
 
 \item{set}{character or \code{NULL}, The set/group that \code{area} belongs to. Can be ignored,
-but should be provided in rare cases where \code{area} name is not unique (a warning is thrown). See \code{\link{climate_regions}}.}
+but should be provided in rare cases where \code{area} name is not unique (a warning is thrown). See \code{\link{climate_locations}}.}
 
 \item{time_scale}{character, \code{"monthly"}, \code{"seasonal"}, \code{"annual"}.}
 

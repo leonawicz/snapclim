@@ -10,8 +10,8 @@
 #' @export
 #'
 #' @examples
-#' collections()
-collections <- function(){
+#' climate_collections()
+climate_collections <- function(){
   id <- .ids
   desc <- c("AR5/CMIP5 climate statistics")
   regions <- TRUE
@@ -27,18 +27,9 @@ collections <- function(){
                      daily = daily, monthly = monthly, seasonal = seasonal, annual = annual, decadal = decadal)
 }
 
-#' Climate regions
-#'
-#' A data frame of available climate regions and their respective region groups for use in \code{\link{climdata}}.
-#'
-#' @format A data frame with 86 rows and 2 columns giving the region name and the set/group it belongs to.
-"climate_regions"
+region_groups <- unique(snaplocs::regions$Group)
 
-region_groups <- function(){
-  unique(snapclim::climate_regions$Group)
-}
-
-point_groups <- levels(snaplocs::locs$region)[-5]
+point_groups <- levels(snaplocs::locs$Group)[-5]
 
 #' List the available location sets
 #'
@@ -53,7 +44,7 @@ point_groups <- levels(snaplocs::locs$region)[-5]
 #' location_sets("region")
 #' location_sets("point")
 location_sets <- function(type){
-  switch(type, region = region_groups(), point = point_groups)
+  switch(type, region = region_groups, point = point_groups)
 }
 
 #' Display available locations
@@ -68,11 +59,10 @@ location_sets <- function(type){
 #' @examples
 #' climate_locations()
 climate_locations <- function(type = "all"){
-  cr <- snapclim::climate_regions
+  cr <- snaplocs::regions
   if(type == "region") return(dplyr::rename(cr, Location = .data[["Region"]]))
   pts <- snaplocs::locs %>% dplyr::select(-.data[["lon"]], -.data[["lat"]]) %>%
-    dplyr::filter(.data[["region"]] != "Northwest Territories") %>%
-    dplyr::rename(Location = .data[["loc"]], Group = .data[["region"]]) %>%
+    dplyr::filter(.data[["Group"]] != "Northwest Territories") %>%
     dplyr::mutate(Group = as.character(.data[["Group"]]))
   if(type == "point") return(pts)
   if(type == "all")

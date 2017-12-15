@@ -13,5 +13,5 @@ test_that("metadata returned as expected", {
   expect_equal(length(location_sets("region")), 10)
   expect_equal(length(location_sets("point")), 6)
 
-  expect_identical(dim(collections()), c(1L, 11L))
+  expect_identical(dim(climate_collections()), c(1L, 11L))
 })

@@ -19,7 +19,7 @@ To begin using `snapclim` effectively, take a look at the climate data collectio
 
 ```{r metadata}
 library(snapclim)
-collections()
+climate_collections()
 ```
 
 This prints a table of available data sets, one per row. The columns provide useful metadata regarding each data set.
