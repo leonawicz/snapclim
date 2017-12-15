@@ -1,3 +1,9 @@
+# snapclim 0.2.2 (Release date: 2017-12-15)
+
+* Migrated region metadata to `snaplocs` package.
+* Renamed `collections` to `climate_collections` to create distinction from other data packages.
+* Updated documentation and unit tests.
+
 # snapclim 0.2.1 (Release date: 2017-12-14)
 
 * Added initial vignette content.

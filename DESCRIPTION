@@ -1,5 +1,5 @@
 Package: snapclim
-Version: 0.2.1
+Version: 0.2.2
 Title: API to SNAP Climate Data Collections
 Description: Provides access to curated collections of public climate data sets
     offered by Scenarios Network for Alaska and Arctic Planning (SNAP) at the University of Alaska Fairbanks.
