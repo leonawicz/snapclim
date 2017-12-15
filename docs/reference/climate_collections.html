@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>All news • snapclim</title>
+<title>Basic metadata for all data sets available via snapclim � climate_collections • snapclim</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -49,7 +49,7 @@
   </head>
 
   <body>
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -189,72 +189,42 @@
       </header>
 
       <div class="row">
-
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Change log <small>All releases</small></h1>
+    <h1>Basic metadata for all data sets available via snapclim</h1>
     </div>
 
-    <div class="contents">
-    <div id="snapclim-0-2-2-release-date-2017-12-15" class="section level1">
-<h1 class="hasAnchor">
-<a href="#snapclim-0-2-2-release-date-2017-12-15" class="anchor"></a>snapclim 0.2.2 (Release date: 2017-12-15)</h1>
-<ul>
-<li>Migrated region metadata to <code>snaplocs</code> package.</li>
-<li>Renamed <code>collections</code> to <code>climate_collections</code> to create distinction from other data packages.</li>
-<li>Updated documentation and unit tests.</li>
-</ul>
-</div>
-    <div id="snapclim-0-2-1-release-date-2017-12-14" class="section level1">
-<h1 class="hasAnchor">
-<a href="#snapclim-0-2-1-release-date-2017-12-14" class="anchor"></a>snapclim 0.2.1 (Release date: 2017-12-14)</h1>
-<ul>
-<li>Added initial vignette content.</li>
-</ul>
-</div>
-    <div id="snapclim-0-2-0-release-date-2017-12-13" class="section level1">
-<h1 class="hasAnchor">
-<a href="#snapclim-0-2-0-release-date-2017-12-13" class="anchor"></a>snapclim 0.2.0 (Release date: 2017-12-13)</h1>
-<ul>
-<li>Updated <code>climdata</code> function to access monthly, seasonal, annual and decadal data for both regions and point locations.</li>
-<li>Completed interface to AWS for regional and point location climate data for downscaled AR5/CMIP5 SNAP data sets.</li>
-<li>Updated readme and other documentation.</li>
-<li>Added several helper functions regarding metadata and validity checks, e.g., location IDs.</li>
-<li>Added unit tests.</li>
-</ul>
-</div>
-    <div id="snapclim-0-1-0" class="section level1">
-<h1 class="hasAnchor">
-<a href="#snapclim-0-1-0" class="anchor"></a>snapclim 0.1.0</h1>
-<ul>
-<li>Added initial data set accessibility via AWS download.</li>
-<li>Added package and function documentation.</li>
-<li>Updated readme and web docs.</li>
-</ul>
-</div>
-    <div id="snapclim-0-0-0-9000" class="section level1">
-<h1 class="hasAnchor">
-<a href="#snapclim-0-0-0-9000" class="anchor"></a>snapclim 0.0.0.9000</h1>
-<ul>
-<li>Added initial package scaffolding.</li>
-</ul>
-</div>
-    </div>
+    
+    <p>This function returns a data frame with basic meta data for all of the curated collections of SNAP climate data
+available via <code>snapclim</code>.
+This includes ID, short description, and spatial and temporal information.</p>
+    
+
+    <pre class="usage"><span class='fu'>climate_collections</span>()</pre>
+        
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a data frame.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>climate_collections</span>()</div><div class='output co'>#&gt; # A tibble: 1 x 11
+#&gt;         id                  description regions points start   end daily
+#&gt;      &lt;chr&gt;                        &lt;chr&gt;   &lt;lgl&gt;  &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;
+#&gt; 1 ar5stats AR5/CMIP5 climate statistics    TRUE   TRUE  1901  2100 FALSE
+#&gt; # ... with 4 more variables: monthly &lt;lgl&gt;, seasonal &lt;lgl&gt;, annual &lt;lgl&gt;,
+#&gt; #   decadal &lt;lgl&gt;</div></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#snapclim-0-2-2-release-date-2017-12-15">0.2.2</a></li>
-        <li><a href="#snapclim-0-2-1-release-date-2017-12-14">0.2.1</a></li>
-        <li><a href="#snapclim-0-2-0-release-date-2017-12-13">0.2.0</a></li>
-        <li><a href="#snapclim-0-1-0">0.1.0</a></li>
-        <li><a href="#snapclim-0-0-0-9000">0.0.0.9000</a></li>
-      </ul>
-    </div>
-  </div>
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
+  </div>
 </div>
 
       <footer>
