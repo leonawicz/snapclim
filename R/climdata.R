@@ -73,7 +73,8 @@ climdata <- function(id, area, set = NULL, time_scale = "monthly", decavg = FALS
   .check_set(set)
   if(decavg) sub_dir <- file.path("decavg", sub_dir)
   loc_type <- ifelse(set %in% region_groups, "regional", "point")
-  file <- file.path(.clim_dir, loc_type, sub_dir, set, paste0(gsub("/", "--", area), "_clim_stats.rds"))
+  file <- file.path(.clim_dir, loc_type, sub_dir, gsub(" ", "%20", set),
+                    paste0(gsub(" ", "%20", gsub("/", "--", area)), "_clim_stats.rds"))
   x <- readRDS(url(file)) %>% dplyr::filter(.data[[intra_var]] %in% intra_annual) %>%
     droplevels %>% dplyr::rename(Model = .data[["GCM"]])
   if("LocGroup" %in% names(x)){
