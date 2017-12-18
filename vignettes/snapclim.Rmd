@@ -112,7 +112,7 @@ Distributional information is available for each point in time and under each co
 ## Seasonal and annual data
 
 More highly aggregated data sets are available as well. The previous data sets were returned using the default argument `time_scale = "monthly"`.
-If you simply change this to `seasonal` or `annual`, `climdata` will return the respective data set.
+If you simply change this to `seasonal` or `annual`, `climdata` will return the respective data set. The first few columns have been dropped:
 
 ```{r data5}
 x <- climdata(id = "ar5stats", area = "Arctic Tundra", time_scale = "seasonal")
@@ -155,7 +155,6 @@ Therefore, you should also specify the `variable` argument. If you do not, mean 
 
 ```{r data7}
 x <- climdata(id = "ar5stats", area = "points", time_scale = "annual", decavg = TRUE, variable = "tas")
-select(x, -c(1:3))
 ```
 
 To show the result more effectively, filter the table to a specific combination of other factors.
