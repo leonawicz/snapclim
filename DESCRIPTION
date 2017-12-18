@@ -23,6 +23,7 @@ Suggests:
     testthat,
     knitr,
     rmarkdown,
+    formatR,
     covr
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
