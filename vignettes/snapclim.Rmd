@@ -60,10 +60,9 @@ though it is permitted since familiarity with the available locations you are in
 `snapclim` provides access to a large amount of SNAP climate data, far more than would be stored locally within an R package.
 The data collections are stored on Amazon Web Services (AWS). 
 `snapclim` interfaces with AWS to bring the specific data you need into your R session, as if it were a native package data set.
-If at any time you get stuck with using `climdata`, see the function documentation.
-It provides detailed descriptions and usage for the available function arguments.
 
-SNAP climate data sets are accessed with `climdata`. The first argument, `id`, specifies a unique data collection.
+SNAP climate data sets are accessed with `climdata`. If at any time you get stuck with using `climdata`, see the function documentation.
+It provides detailed descriptions and usage for the available function arguments. The first argument, `id`, specifies a unique data collection.
 See the `id` column in `collections` above. Next, a location is specified. 
 A simple call to `climdata` for SNAP 2-km downscaled AR5/CMIP5 climate data summary statistics for Anchorage, Alaska looks like the following.
 
@@ -99,7 +98,8 @@ climdata(id = "ar5stats", area = "Galena", set = "British Columbia")
 The climate variable values given in the tables obtained so far have all pertained to specific points in space.
 For regional climate data, a broad set of statistics is available that summarizes the distribution of climate values over a spatial domain defined by a polygon.
 For example, the table for the Arctic Tundra contains the mean, standard deviation, minimum, maximum and a set of distribution quantiles.
-Since the columns are truncated to fit in the display below, the first seven columns of ID variables are dropped here.
+Since the columns are truncated when printed in the display below, the first seven columns of ID variables are dropped in this example using `select` 
+in order to show more of the additional statistics.
 
 ```{r data4}
 x <- climdata(id = "ar5stats", area = "Arctic Tundra")
@@ -115,7 +115,8 @@ More highly aggregated data sets are available as well. The previous data sets w
 If you simply change this to `seasonal` or `annual`, `climdata` will return the respective data set.
 
 ```{r data5}
-climdata(id = "ar5stats", area = "Arctic Tundra", time_scale = "seasonal")
+x <- climdata(id = "ar5stats", area = "Arctic Tundra", time_scale = "seasonal")
+select(x, -c(1:3))
 ```
 
 It is important to note that seasonal and annual aggregate statistics are not simple means of monthly statistics.
@@ -137,7 +138,8 @@ Instead, use `decavg = TRUE`. This is `FALSE` by default so it did not previousl
 When requesting decadal averages, there is still the choice of whether those averages should be of monthly, seasonal or annual resolution statistics.
 
 ```{r data6}
-climdata(id = "ar5stats", area = "Arctic Tundra", time_scale = "seasonal", decavg = TRUE)
+x <- climdata(id = "ar5stats", area = "Arctic Tundra", time_scale = "seasonal", decavg = TRUE)
+select(x, -c(1:3))
 ```
 
 ## Mulitple locations
@@ -153,7 +155,7 @@ Therefore, you should also specify the `variable` argument. If you do not, mean 
 
 ```{r data7}
 x <- climdata(id = "ar5stats", area = "points", time_scale = "annual", decavg = TRUE, variable = "tas")
-x
+select(x, -c(1:3))
 ```
 
 To show the result more effectively, filter the table to a specific combination of other factors.
