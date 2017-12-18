@@ -63,7 +63,7 @@ The data collections are stored on Amazon Web Services (AWS).
 
 SNAP climate data sets are accessed with `climdata`. If at any time you get stuck with using `climdata`, see the function documentation.
 It provides detailed descriptions and usage for the available function arguments. The first argument, `id`, specifies a unique data collection.
-See the `id` column in `collections` above. Next, a location is specified. 
+See the `id` column in `climate_collections` above. Next, a location is specified. 
 A simple call to `climdata` for SNAP 2-km downscaled AR5/CMIP5 climate data summary statistics for Anchorage, Alaska looks like the following.
 
 ```{r data1}
