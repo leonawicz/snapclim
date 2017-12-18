@@ -127,6 +127,8 @@ winter temperature quantiles are calculated from the applicable 3-month period s
 While the mean is invariant to this difference, other statistics are not. 
 The 95th percentile winter temperature across space during the three month period does not result from taking the average of three monthly 95th percentile values.
 
+A final note on season and annual statistics is that, like monthly statistics, these remain period totals for precipitation and period averages for temperature variables.
+
 ## Decadal data
 
 In contrast to monthly, seasonal and annual resolution statistics, all three of which are computed across space at their respective temporal resolutions, 
@@ -146,7 +148,7 @@ select(x, -c(1:3))
 
 It is possible to obtain climate data sets that include multiple locations using `climdata`, but this is only available for smaller data sets where it would not lead to a 
 cumbersome data download. Currently, the only data set for which multiple locations can be returned at once is the decadal averages data set  in the `ar5stats` collection.
-By specifying `area = "points"` rather than a specific point location, a table is returned containing data all 3,867 locations. 
+By specifying `area = "points"` rather than a specific point location, a table is returned containing data for all 3,867 point locations. 
 
 There are two requirements that help to ensure this does not lead to an excessive download size or waiting time. 
 As mentioned, this is only available for the highly aggregated decadal data. Without setting `decavg = TRUE`, attempting to specify `area = "points"` will throw an error.
