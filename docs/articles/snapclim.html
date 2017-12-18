@@ -250,8 +250,8 @@
 <div id="data-requests" class="section level2">
 <h2 class="hasAnchor">
 <a href="#data-requests" class="anchor"></a>Data requests</h2>
-<p><code>snapclim</code> provides access to a large amount of SNAP climate data, far more than would be stored locally within an R package. The data collections are stored on Amazon Web Services (AWS). <code>snapclim</code> interfaces with AWS to bring the specific data you need into your R session, as if it were a native package data set. If at any time you get stuck with using <code>climdata</code>, see the function documentation. It provides detailed descriptions and usage for the available function arguments.</p>
-<p>SNAP climate data sets are accessed with <code>climdata</code>. The first argument, <code>id</code>, specifies a unique data collection. See the <code>id</code> column in <code>collections</code> above. Next, a location is specified. A simple call to <code>climdata</code> for SNAP 2-km downscaled AR5/CMIP5 climate data summary statistics for Anchorage, Alaska looks like the following.</p>
+<p><code>snapclim</code> provides access to a large amount of SNAP climate data, far more than would be stored locally within an R package. The data collections are stored on Amazon Web Services (AWS). <code>snapclim</code> interfaces with AWS to bring the specific data you need into your R session, as if it were a native package data set.</p>
+<p>SNAP climate data sets are accessed with <code>climdata</code>. If at any time you get stuck with using <code>climdata</code>, see the function documentation. It provides detailed descriptions and usage for the available function arguments. The first argument, <code>id</code>, specifies a unique data collection. See the <code>id</code> column in <code>collections</code> above. Next, a location is specified. A simple call to <code>climdata</code> for SNAP 2-km downscaled AR5/CMIP5 climate data summary statistics for Anchorage, Alaska looks like the following.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/climdata.html">climdata</a></span>(<span class="st">"ar5stats"</span>, <span class="st">"Anchorage"</span>)
 <span class="co">#&gt; # A tibble: 101,400 x 8</span>
 <span class="co">#&gt;           RCP   Model    Var  Group  Location  Year  Month  Mean</span>
@@ -308,7 +308,7 @@
 <div id="regional-statistics" class="section level2">
 <h2 class="hasAnchor">
 <a href="#regional-statistics" class="anchor"></a>Regional statistics</h2>
-<p>The climate variable values given in the tables obtained so far have all pertained to specific points in space. For regional climate data, a broad set of statistics is available that summarizes the distribution of climate values over a spatial domain defined by a polygon. For example, the table for the Arctic Tundra contains the mean, standard deviation, minimum, maximum and a set of distribution quantiles. Since the columns are truncated to fit in the display below, the first seven columns of ID variables are dropped here.</p>
+<p>The climate variable values given in the tables obtained so far have all pertained to specific points in space. For regional climate data, a broad set of statistics is available that summarizes the distribution of climate values over a spatial domain defined by a polygon. For example, the table for the Arctic Tundra contains the mean, standard deviation, minimum, maximum and a set of distribution quantiles. Since the columns are truncated when printed in the display below, the first seven columns of ID variables are dropped in this example using <code>select</code> in order to show more of the additional statistics.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/climdata.html">climdata</a></span>(<span class="dt">id =</span> <span class="st">"ar5stats"</span>, <span class="dt">area =</span> <span class="st">"Arctic Tundra"</span>)
 <span class="kw">select</span>(x, <span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>))
 <span class="co">#&gt; # A tibble: 101,400 x 13</span>
@@ -331,23 +331,23 @@
 <div id="seasonal-and-annual-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#seasonal-and-annual-data" class="anchor"></a>Seasonal and annual data</h2>
-<p>More highly aggregated data sets are available as well. The previous data sets were returned using the default argument <code>time_scale = "monthly"</code>. If you simply change this to <code>seasonal</code> or <code>annual</code>, <code>climdata</code> will return the respective data set.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/climdata.html">climdata</a></span>(<span class="dt">id =</span> <span class="st">"ar5stats"</span>, <span class="dt">area =</span> <span class="st">"Arctic Tundra"</span>, <span class="dt">time_scale =</span> <span class="st">"seasonal"</span>)
-<span class="co">#&gt; # A tibble: 33,800 x 20</span>
-<span class="co">#&gt;           RCP   Model    Var                Group        Region  Year</span>
-<span class="co">#&gt;        &lt;fctr&gt;  &lt;fctr&gt; &lt;fctr&gt;                &lt;chr&gt;         &lt;chr&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1901</span>
-<span class="co">#&gt;  2 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1901</span>
-<span class="co">#&gt;  3 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1901</span>
-<span class="co">#&gt;  4 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1901</span>
-<span class="co">#&gt;  5 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1902</span>
-<span class="co">#&gt;  6 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1902</span>
-<span class="co">#&gt;  7 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1902</span>
-<span class="co">#&gt;  8 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1902</span>
-<span class="co">#&gt;  9 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1903</span>
-<span class="co">#&gt; 10 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra  1903</span>
-<span class="co">#&gt; # ... with 33,790 more rows, and 14 more variables: Season &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   Mean &lt;dbl&gt;, SD &lt;dbl&gt;, Min &lt;dbl&gt;, Max &lt;dbl&gt;, Pct_025 &lt;dbl&gt;,</span>
+<p>More highly aggregated data sets are available as well. The previous data sets were returned using the default argument <code>time_scale = "monthly"</code>. If you simply change this to <code>seasonal</code> or <code>annual</code>, <code>climdata</code> will return the respective data set. The first few columns have been dropped:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/climdata.html">climdata</a></span>(<span class="dt">id =</span> <span class="st">"ar5stats"</span>, <span class="dt">area =</span> <span class="st">"Arctic Tundra"</span>, <span class="dt">time_scale =</span> <span class="st">"seasonal"</span>)
+<span class="kw">select</span>(x, <span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>))
+<span class="co">#&gt; # A tibble: 33,800 x 17</span>
+<span class="co">#&gt;                   Group        Region  Year Season  Mean    SD   Min   Max</span>
+<span class="co">#&gt;                   &lt;chr&gt;         &lt;chr&gt; &lt;int&gt; &lt;fctr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Alaska L2 Ecoregions Arctic Tundra  1901 Winter  18.9   7.8   1.5  65.3</span>
+<span class="co">#&gt;  2 Alaska L2 Ecoregions Arctic Tundra  1901 Spring  15.0   6.7   0.7  51.2</span>
+<span class="co">#&gt;  3 Alaska L2 Ecoregions Arctic Tundra  1901 Summer  47.4  25.5  10.1 156.8</span>
+<span class="co">#&gt;  4 Alaska L2 Ecoregions Arctic Tundra  1901 Autumn  33.4  18.3   6.3 143.8</span>
+<span class="co">#&gt;  5 Alaska L2 Ecoregions Arctic Tundra  1902 Winter  19.1   8.1   1.6  66.9</span>
+<span class="co">#&gt;  6 Alaska L2 Ecoregions Arctic Tundra  1902 Spring  15.0   6.7   0.5  53.0</span>
+<span class="co">#&gt;  7 Alaska L2 Ecoregions Arctic Tundra  1902 Summer  47.3  25.4  10.5 168.0</span>
+<span class="co">#&gt;  8 Alaska L2 Ecoregions Arctic Tundra  1902 Autumn  32.9  17.9   6.7 143.0</span>
+<span class="co">#&gt;  9 Alaska L2 Ecoregions Arctic Tundra  1903 Winter  19.1   8.4   1.6  61.2</span>
+<span class="co">#&gt; 10 Alaska L2 Ecoregions Arctic Tundra  1903 Spring  14.6   9.9   0.8  74.7</span>
+<span class="co">#&gt; # ... with 33,790 more rows, and 9 more variables: Pct_025 &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   Pct_05 &lt;dbl&gt;, Pct_10 &lt;dbl&gt;, Pct_25 &lt;dbl&gt;, Pct_50 &lt;dbl&gt;, Pct_75 &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   Pct_90 &lt;dbl&gt;, Pct_95 &lt;dbl&gt;, Pct_975 &lt;dbl&gt;</span></code></pre></div>
 <p>It is important to note that seasonal and annual aggregate statistics are not simple means of monthly statistics. Each of these collections is independently derived from climate variable spatial probability distributions at their respective temporal resolutions.</p>
@@ -358,24 +358,25 @@
 <a href="#decadal-data" class="anchor"></a>Decadal data</h2>
 <p>In contrast to monthly, seasonal and annual resolution statistics, all three of which are computed across space at their respective temporal resolutions, decadal statistics are in fact simple decadal averages of monthly, seasonal and annual data. For example, the decadal mean of the 95th percentile monthly temperature across a region is just that; the mean of the ten annual 95th percentile monthly values in a decade.</p>
 <p>For this reason, decadal data is not requested with <code>climdata</code> by specifying it with <code>time_scale</code>, which always pertains to annual and intra-annual (monthly or seasonal) time steps. Instead, use <code>decavg = TRUE</code>. This is <code>FALSE</code> by default so it did not previously need to be specified. When requesting decadal averages, there is still the choice of whether those averages should be of monthly, seasonal or annual resolution statistics.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="../reference/climdata.html">climdata</a></span>(<span class="dt">id =</span> <span class="st">"ar5stats"</span>, <span class="dt">area =</span> <span class="st">"Arctic Tundra"</span>, <span class="dt">time_scale =</span> <span class="st">"seasonal"</span>, <span class="dt">decavg =</span> <span class="ot">TRUE</span>)
-<span class="co">#&gt; # A tibble: 3,776 x 20</span>
-<span class="co">#&gt;           RCP   Model    Var                Group        Region Decade</span>
-<span class="co">#&gt;        &lt;fctr&gt;  &lt;fctr&gt; &lt;fctr&gt;                &lt;chr&gt;         &lt;chr&gt;  &lt;int&gt;</span>
-<span class="co">#&gt;  1 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1900</span>
-<span class="co">#&gt;  2 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1900</span>
-<span class="co">#&gt;  3 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1900</span>
-<span class="co">#&gt;  4 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1900</span>
-<span class="co">#&gt;  5 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1910</span>
-<span class="co">#&gt;  6 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1910</span>
-<span class="co">#&gt;  7 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1910</span>
-<span class="co">#&gt;  8 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1910</span>
-<span class="co">#&gt;  9 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1920</span>
-<span class="co">#&gt; 10 Historical CRU 4.0     pr Alaska L2 Ecoregions Arctic Tundra   1920</span>
-<span class="co">#&gt; # ... with 3,766 more rows, and 14 more variables: Season &lt;fctr&gt;,</span>
-<span class="co">#&gt; #   Mean &lt;dbl&gt;, SD &lt;dbl&gt;, Min &lt;dbl&gt;, Max &lt;dbl&gt;, Pct_025 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Pct_05 &lt;dbl&gt;, Pct_10 &lt;dbl&gt;, Pct_25 &lt;dbl&gt;, Pct_50 &lt;dbl&gt;, Pct_75 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   Pct_90 &lt;dbl&gt;, Pct_95 &lt;dbl&gt;, Pct_975 &lt;dbl&gt;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/climdata.html">climdata</a></span>(<span class="dt">id =</span> <span class="st">"ar5stats"</span>, <span class="dt">area =</span> <span class="st">"Arctic Tundra"</span>, <span class="dt">time_scale =</span> <span class="st">"seasonal"</span>, 
+    <span class="dt">decavg =</span> <span class="ot">TRUE</span>)
+<span class="kw">select</span>(x, <span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>))
+<span class="co">#&gt; # A tibble: 3,776 x 17</span>
+<span class="co">#&gt;                   Group        Region Decade Season  Mean    SD   Min</span>
+<span class="co">#&gt;                   &lt;chr&gt;         &lt;chr&gt;  &lt;int&gt; &lt;fctr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Alaska L2 Ecoregions Arctic Tundra   1900 Winter  18.1   8.8   1.6</span>
+<span class="co">#&gt;  2 Alaska L2 Ecoregions Arctic Tundra   1900 Spring  14.2   8.7   0.5</span>
+<span class="co">#&gt;  3 Alaska L2 Ecoregions Arctic Tundra   1900 Summer  46.3  27.6   7.8</span>
+<span class="co">#&gt;  4 Alaska L2 Ecoregions Arctic Tundra   1900 Autumn  30.3  18.2   4.1</span>
+<span class="co">#&gt;  5 Alaska L2 Ecoregions Arctic Tundra   1910 Winter  20.1  13.8   1.0</span>
+<span class="co">#&gt;  6 Alaska L2 Ecoregions Arctic Tundra   1910 Spring  16.5  12.3   0.6</span>
+<span class="co">#&gt;  7 Alaska L2 Ecoregions Arctic Tundra   1910 Summer  47.0  29.0   6.9</span>
+<span class="co">#&gt;  8 Alaska L2 Ecoregions Arctic Tundra   1910 Autumn  32.5  20.9   3.6</span>
+<span class="co">#&gt;  9 Alaska L2 Ecoregions Arctic Tundra   1920 Winter  22.7  15.1   0.9</span>
+<span class="co">#&gt; 10 Alaska L2 Ecoregions Arctic Tundra   1920 Spring  16.1  12.2   0.4</span>
+<span class="co">#&gt; # ... with 3,766 more rows, and 10 more variables: Max &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Pct_025 &lt;dbl&gt;, Pct_05 &lt;dbl&gt;, Pct_10 &lt;dbl&gt;, Pct_25 &lt;dbl&gt;, Pct_50 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   Pct_75 &lt;dbl&gt;, Pct_90 &lt;dbl&gt;, Pct_95 &lt;dbl&gt;, Pct_975 &lt;dbl&gt;</span></code></pre></div>
 </div>
 <div id="mulitple-locations" class="section level2">
 <h2 class="hasAnchor">
@@ -383,22 +384,7 @@
 <p>It is possible to obtain climate data sets that include multiple locations using <code>climdata</code>, but this is only available for smaller data sets where it would not lead to a cumbersome data download. Currently, the only data set for which multiple locations can be returned at once is the decadal averages data set in the <code>ar5stats</code> collection. By specifying <code>area = "points"</code> rather than a specific point location, a table is returned containing data all 3,867 locations.</p>
 <p>There are two requirements that help to ensure this does not lead to an excessive download size or waiting time. As mentioned, this is only available for the highly aggregated decadal data. Without setting <code>decavg = TRUE</code>, attempting to specify <code>area = "points"</code> will throw an error. The second requirement is that only a single climate variable will be returned. You can always call <code>climdata</code> multiple times for additional variables if desired. Therefore, you should also specify the <code>variable</code> argument. If you do not, mean temperature (<code>tas</code>) is assumed.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw"><a href="../reference/climdata.html">climdata</a></span>(<span class="dt">id =</span> <span class="st">"ar5stats"</span>, <span class="dt">area =</span> <span class="st">"points"</span>, <span class="dt">time_scale =</span> <span class="st">"annual"</span>, <span class="dt">decavg =</span> <span class="ot">TRUE</span>, 
-    <span class="dt">variable =</span> <span class="st">"tas"</span>)
-x
-<span class="co">#&gt; # A tibble: 974,484 x 8</span>
-<span class="co">#&gt;           RCP   Model    Var  Group     Location Decade Season  Mean</span>
-<span class="co">#&gt;        &lt;fctr&gt;  &lt;fctr&gt; &lt;fctr&gt;  &lt;chr&gt;        &lt;chr&gt;  &lt;int&gt; &lt;fctr&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Historical CRU 4.0    tas Alaska Adak Station   1900 Annual   4.6</span>
-<span class="co">#&gt;  2 Historical CRU 4.0    tas Alaska Adak Station   1910 Annual   4.2</span>
-<span class="co">#&gt;  3 Historical CRU 4.0    tas Alaska Adak Station   1920 Annual   4.7</span>
-<span class="co">#&gt;  4 Historical CRU 4.0    tas Alaska Adak Station   1930 Annual   5.3</span>
-<span class="co">#&gt;  5 Historical CRU 4.0    tas Alaska Adak Station   1940 Annual   4.3</span>
-<span class="co">#&gt;  6 Historical CRU 4.0    tas Alaska Adak Station   1950 Annual   4.3</span>
-<span class="co">#&gt;  7 Historical CRU 4.0    tas Alaska Adak Station   1960 Annual   4.6</span>
-<span class="co">#&gt;  8 Historical CRU 4.0    tas Alaska Adak Station   1970 Annual   4.2</span>
-<span class="co">#&gt;  9 Historical CRU 4.0    tas Alaska Adak Station   1980 Annual   4.9</span>
-<span class="co">#&gt; 10 Historical CRU 4.0    tas Alaska Adak Station   1990 Annual   4.9</span>
-<span class="co">#&gt; # ... with 974,474 more rows</span></code></pre></div>
+    <span class="dt">variable =</span> <span class="st">"tas"</span>)</code></pre></div>
 <p>To show the result more effectively, filter the table to a specific combination of other factors.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(x, RCP <span class="op">==</span><span class="st"> "6.0"</span> <span class="op">&amp;</span><span class="st"> </span>Model <span class="op">==</span><span class="st"> "GFDL-CM3"</span> <span class="op">&amp;</span><span class="st"> </span>Decade <span class="op">==</span><span class="st"> </span><span class="dv">2050</span>)
 <span class="co">#&gt; # A tibble: 3,867 x 8</span>
