@@ -17,7 +17,7 @@ Daily, monthly, seasonal, annual and decadal temporal resolutions are planned fo
 SNAPverse context
 -----------------
 
-`snapclim` is a member package in the data sector of the SNAPverse. Data packages typically include raw data sets in support of other R packages. `snapclim` is technically more like a typical R package. Instead of storing local copies of data sets, it contains functions for accessing external data sets that would be too large to store conveniently even in an explicit data package, especially considering that any given user session would likely utilize only a small fraction of the total available data. However, `snapclim` does not offer functionality beyond accessing data and is therefore still best conceptualized as a data package. Functions for statistical analysis and modeling of SNAP data are already encompassed in packages like `snapstat`.
+`snapclim` is a member package in the data sector of the [SNAPverse](https://leonawicz.github.io/snapverse/) collection of R packages. Data packages typically include raw data sets in support of other R packages. `snapclim` is technically more like a typical R package. Instead of storing local copies of data sets, it contains functions for accessing external data sets that would be too large to store conveniently even in an explicit data package, especially considering that any given user session would likely utilize only a small fraction of the total available data. However, `snapclim` does not offer functionality beyond accessing data and is therefore still best conceptualized as a data package. Functions for statistical analysis and modeling of SNAP data are already encompassed in packages like `snapstat`.
 
 Installation
 ------------
@@ -28,3 +28,8 @@ You can install snapclim from github with:
 # install.packages('devtools')
 devtools::install_github("leonawicz/snapclim")
 ```
+
+Reference
+---------
+
+[Complete package reference and function documentation](https://leonawicz.github.io/snapclim/)
