@@ -4,8 +4,8 @@
 \alias{climdata}
 \title{Obtain SNAP climate data sets}
 \usage{
-climdata(id, area, set = NULL, time_scale = "monthly", decavg = FALSE,
-  variable = NULL)
+climdata(id, area, set = NULL, time_scale = "monthly",
+  decavg = FALSE, variable = NULL)
 }
 \arguments{
 \item{id}{character, data set ID. See \code{\link{climate_collections}} for available data sets.}
