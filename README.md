@@ -5,6 +5,11 @@ snapclim
 
 [![Travis-CI Build Status](https://travis-ci.org/leonawicz/snapclim.svg?branch=master)](https://travis-ci.org/leonawicz/snapclim) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/leonawicz/snapclim?branch=master&svg=true)](https://ci.appveyor.com/project/leonawicz/snapclim) [![Coverage Status](https://img.shields.io/codecov/c/github/leonawicz/snapclim/master.svg)](https://codecov.io/github/leonawicz/snapclim?branch=master)
 
+SNAPverse R package ecosystem development frozen.
+-------------------------------------------------
+
+*Development of the SNAPverse R package ecosystem has been frozen indefinitely. This project was never directly funded. I began it out of personal interest, but no longer work for SNAP. It will remain archived here for historical reference.*
+
 The `snapclim` package provides access to curated collections of public climate data sets offered by Scenarios Network for Alaska and Arctic Planning (SNAP) at the University of Alaska Fairbanks. `snapclim` interfaces with SNAP's Amazon Web Services cloud storage to retrieve specific climate data. Available data includes historical observation-based climate data as well as historical and projected climate model outputs. Available climate variables include total precipitation and minimum, mean and maximum temperature.
 
 Time and space
